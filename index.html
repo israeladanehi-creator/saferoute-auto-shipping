@@ -394,6 +394,84 @@
             opacity: 1;
         }
 
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            background: none;
+            border: none;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #003d7a 0%, #0052a3 100%);
+            flex-direction: column;
+            padding: 16px 20px;
+            gap: 8px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            animation: slideDown 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 16px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-size: 15px;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .mobile-menu .btn-login {
+            width: 100%;
+            text-align: center;
+            margin-top: 8px;
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 36px;
@@ -404,7 +482,11 @@
             }
 
             nav {
-                gap: 16px;
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
             }
 
             nav a {
@@ -417,6 +499,10 @@
 
             .section-title {
                 font-size: 28px;
+            }
+
+            .header-content {
+                position: relative;
             }
         }
 
@@ -445,6 +531,209 @@
             font-weight: 600;
             margin-bottom: 16px;
         }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .modal-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .modal-header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .success-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .tracking-id-box {
+            background: #f9fafb;
+            border: 2px solid #ff6b35;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 24px 0;
+            text-align: center;
+        }
+
+        .tracking-label {
+            font-size: 12px;
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .tracking-code {
+            font-size: 24px;
+            font-weight: 700;
+            color: #003d7a;
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+            margin-bottom: 12px;
+        }
+
+        .copy-btn {
+            background: #ff6b35;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #ff5517;
+        }
+
+        .copy-btn.copied {
+            background: #10b981;
+        }
+
+        .details-grid {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .detail-value {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .modal-actions button {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-primary-modal {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .btn-primary-modal:hover {
+            background: #ff5517;
+        }
+
+        .btn-secondary-modal {
+            background: #e5e7eb;
+            color: #1a1a1a;
+        }
+
+        .btn-secondary-modal:hover {
+            background: #d1d5db;
+        }
+
+        .next-steps {
+            background: #e8f0f7;
+            border-left: 4px solid #003d7a;
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 16px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .next-steps strong {
+            color: #003d7a;
+        }
+
+        @media (max-width: 600px) {
+            .modal {
+                padding: 24px;
+            }
+
+            .modal-header h2 {
+                font-size: 22px;
+            }
+
+            .tracking-code {
+                font-size: 18px;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
@@ -460,6 +749,17 @@
                 <a href="#faq">FAQ</a>
                 <button class="btn-login">Sign In</button>
             </nav>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="#features">Features</a>
+                <a href="#how">How it Works</a>
+                <a href="#faq">FAQ</a>
+                <button class="btn-login">Sign In</button>
+            </div>
         </div>
     </header>
 
@@ -706,23 +1006,190 @@
         </div>
     </footer>
 
+    <div class="modal-overlay" id="successModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="success-icon">✓</div>
+                <h2>Tracking ID Created!</h2>
+                <p>Your shipment is ready to track</p>
+            </div>
+
+            <div class="tracking-id-box">
+                <div class="tracking-label">Your Tracking ID</div>
+                <div class="tracking-code" id="trackingIdDisplay">SR-2024-ABC123XYZ</div>
+                <button class="copy-btn" id="copyBtn" onclick="copyTrackingId()">Copy ID</button>
+            </div>
+
+            <div class="details-grid">
+                <div class="detail-row">
+                    <span class="detail-label">Email</span>
+                    <span class="detail-value" id="displayEmail">email@company.com</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Company</span>
+                    <span class="detail-value" id="displayCompany">Company Name</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Origin Location</span>
+                    <span class="detail-value" id="displayLocation">California</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Status</span>
+                    <span class="detail-value" style="color: #10b981;">Active</span>
+                </div>
+            </div>
+
+            <div class="next-steps">
+                <strong>Next Steps:</strong><br>
+                • Save your tracking ID for future reference<br>
+                • Check your email for confirmation details<br>
+                • Schedule pickup within 24 hours
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-primary-modal" onclick="trackShipment()">Track Shipment</button>
+                <button class="btn-secondary-modal" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Tracking ID Generation
+        function generateTrackingId() {
+            const prefix = 'SR';
+            const year = new Date().getFullYear();
+            const randomPart = Math.random().toString(36).substring(2, 8).toUpperCase();
+            const numberPart = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            return `${prefix}-${year}-${randomPart}${numberPart}`;
+        }
+
+        // Form Submission Handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const email = document.querySelector('input[placeholder="your@company.com"]').value;
+            const company = document.querySelector('input[placeholder="Your company name"]').value;
+            const locationSelect = document.querySelector('select');
+            const location = locationSelect.options[locationSelect.selectedIndex].text;
+            
+            // Generate tracking ID
+            const trackingId = generateTrackingId();
+            
+            // Create customer data object
+            const customerData = {
+                trackingId: trackingId,
+                email: email,
+                company: company,
+                location: location,
+                createdAt: new Date().toLocaleString(),
+                status: 'Active'
+            };
+            
+            // Store in localStorage
+            const existingData = JSON.parse(localStorage.getItem('saferouteShipments')) || [];
+            existingData.push(customerData);
+            localStorage.setItem('saferouteShipments', JSON.stringify(existingData));
+            
+            // Display modal with tracking ID
+            displaySuccessModal(trackingId, email, company, location);
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Display Success Modal
+        function displaySuccessModal(trackingId, email, company, location) {
+            document.getElementById('trackingIdDisplay').textContent = trackingId;
+            document.getElementById('displayEmail').textContent = email;
+            document.getElementById('displayCompany').textContent = company;
+            document.getElementById('displayLocation').textContent = location;
+            
+            const modal = document.getElementById('successModal');
+            modal.classList.add('active');
+            
+            // Scroll to modal
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Modal
+        function closeModal() {
+            const modal = document.getElementById('successModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Copy Tracking ID
+        function copyTrackingId() {
+            const trackingId = document.getElementById('trackingIdDisplay').textContent;
+            navigator.clipboard.writeText(trackingId).then(() => {
+                const btn = document.getElementById('copyBtn');
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // Track Shipment
+        function trackShipment() {
+            const trackingId = document.getElementById('trackingIdDisplay').textContent;
+            alert(`Tracking shipment: ${trackingId}\n\nYou will be redirected to the tracking dashboard.`);
+            closeModal();
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('successModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Hamburger Menu Functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideHeader = event.target.closest('header');
+            if (!isClickInsideHeader && mobileMenu.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // FAQ Toggle
         function toggleFAQ(element) {
             const item = element.parentElement;
             item.classList.toggle('active');
         }
 
+        // Scroll Functions
         function scrollToTracking() {
             document.querySelector('input[placeholder="your@company.com"]').scrollIntoView({ behavior: 'smooth' });
         }
 
         function scrollToFeatures() {
             document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function handleSubmit(event) {
-            event.preventDefault();
-            alert('Tracking ID created! Check your email for next steps.');
         }
     </script>
 </body>
